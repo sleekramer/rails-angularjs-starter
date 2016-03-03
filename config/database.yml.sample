@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+
+development:
+  <<: *default
+  database: app-name_development
+
+test:
+  <<: *default
+  database: app-name_test
+
+
+production:
+  <<: *default
+  statement_limit: 100
+  database: app-name_production
+  username: app-name-clone
+  password: <%= ENV['BLOC-CHAT-CLONE_DATABASE_PASSWORD'] %>
